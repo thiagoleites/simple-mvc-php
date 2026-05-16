@@ -1,3 +1,7 @@
 RewriteEngine On
-RewriteRule ^$ public/ [L]
-RewriteRule (.*) public/$1 [L]
+
+# Se estiver dentro de /public não reescreve
+RewriteCond %{REQUEST_URI} !^/public/
+
+# Envia tudo para o public
+RewriteRule ^(.*)$ public/$1 [L]
