@@ -1,7 +1,6 @@
-RewriteEngine On
+ RewriteEngine On
+ RewriteBase /
 
-# Se estiver dentro de /public não reescreve
-RewriteCond %{REQUEST_URI} !^/public/
-
-# Envia tudo para o public
-RewriteRule ^(.*)$ public/$1 [L]
+ RewriteCond %{THE_REQUEST} public/([^\s?]*) [NC]
+ RewriteRule ^ %1 [L,NE,R=302]
+ RewriteRule ^((?!public/).*)$ mvc/public/$1 [L,NC]
