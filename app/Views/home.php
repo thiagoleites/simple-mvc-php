@@ -9,7 +9,7 @@
             usando seu próprio arquivo CSS como base visual.
         </p>
 
-        <a href="/mvc/public/login" class="btn btn-primary">Acessar Login</a>
+        <a href="/mvc/login" class="btn btn-primary">Acessar Login</a>
         <a href="#" class="btn btn-secondary">Ver Componentes</a>
     </section>
 
