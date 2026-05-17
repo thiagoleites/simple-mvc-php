@@ -20,7 +20,7 @@ class Router
     {
         $uri = parse_url($uri, PHP_URL_PATH);
 
-        $basePath = '/mvc/public';
+        $basePath = '/mvc';
 
         // Remove /mvc/public
         if (str_starts_with($uri, $basePath)) {

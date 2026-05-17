@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function authenticate()
     {
         $email = $_POST['email'] ?? '';
-        $senha = $_POST['senha'] ?? '';
+        $senha = $_POST['password'] ?? '';
 
         if ($email === 'admin@email.com' && $senha === '123456') {
             $_SESSION['usuario'] = [

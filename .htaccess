@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteBase /mvc/
+
+RewriteCond %{REQUEST_URI} !^/mvc/public/
+
+RewriteRule ^(.*)$ public/$1 [L]
