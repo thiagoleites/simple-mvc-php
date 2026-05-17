@@ -8,27 +8,45 @@ class Router
 
     public function get(string $uri, array $action)
     {
-        $this->routes["GET"][$uri] = $actions;
+        $this->routes["GET"][$uri] = $action;
     }
 
-    public function post(string $uri, array $actions)
+    public function post(string $uri, array $action)
     {
-         $this->routes["POST"][$uri] = $actions;
+         $this->routes["POST"][$uri] = $action;
     }
 
     public function dispatch(string $uri, string $method)
     {
         $uri = parse_url($uri, PHP_URL_PATH);
 
-        if (!isset($this->routes[$method][$uri])) {
-            http_response_code(404);
-            echo "Página não encontrada";
-            return;
+        // remover /public/indesx se estiver acessando
+
+        $uri = str_replace('public/index.php', '', $uri);
+
+        if ($uri === '') {
+            $uri = '/';
         }
 
-        [$controller, $methodName] = $this->routes[$method][$uri];
+        if (!isset($this->routes[$method][$uri])) {
+            http_response_code(404);
+            echo "Rota não encontrada: " . $uri;
+            return;
+        }
+        
+        [$controller, $action] = $this->routes[$method][$uri];
+        
+        if (!class_exists($controller)) {
+            echo "Controller não encontrado: " . $controller;
+            return;
+        }
+            
         $controllerInstance = new $controller();
 
-        $controllerInstance->$methodName;
+        if (!method_exists($controllerInstance, $action)) {
+            echo "Método não encontrado: " . $action;
+        }
+            
+        $controllerInstance->$action();
     }
 }

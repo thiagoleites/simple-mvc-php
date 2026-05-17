@@ -10,8 +10,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $this->view('home', [
-            'titulo' => 'Página Home'
-        ]);
+        // $this->view('home', [
+        //     'titulo' => 'Página Home'
+        // ]);
+        echo "Home funcionando";
     }
 }
