@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC com PHP puro</title>
-    <link rel="stylesheet" href="https://github.com/thiagoleites/frameworkcss/blob/main/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thiagoleites/frameworkcss/style.css">
 </head>
 <body>
     
