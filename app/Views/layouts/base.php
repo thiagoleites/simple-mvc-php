@@ -5,17 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC com PHP puro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thiagoleites/frameworkcss/style.css">
+    <style>
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--color-border-gray);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--color-graphite);
+            background-color: var(--color-white);
+            transition: border-color 0.2s ease;
+        }
+    </style>
 </head>
 <body>
     
     <header class="main-header">
         <div class="container">
-            <a href="#" class="logo">Logo</a>
+            <a href="/mvc/public/" class="logo">Mini MVC</a>
+
             <nav class="main-nav">
-                <a href="#">Início</a>
-                <a href="#">Sobre</a>
-                <a href="#">Serviços</a>
-                <a href="#">Contato</a>
+                <a href="/mvc/public/">Home</a>
+                <a href="/mvc/public/login">Login</a>
             </nav>
         </div>
     </header>

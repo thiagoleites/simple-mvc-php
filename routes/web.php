@@ -1,8 +1,8 @@
 <?php
 
 use App\Controllers\HomeController;
-use App\Controllers\AuthControllers;
-use App\Controllers\UserControllers;
+use App\Controllers\AuthController;
+use App\Controllers\UserController;
 
 
 $router->get('/', [HomeController::class, 'index']);
