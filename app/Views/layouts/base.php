@@ -27,11 +27,11 @@
     
     <header class="main-header">
         <div class="container">
-            <a href="/mvc/public/" class="logo">Mini MVC</a>
+            <a href="/mvc" class="logo">Mini MVC</a>
 
             <nav class="main-nav">
-                <a href="/mvc/public/">Home</a>
-                <a href="/mvc/public/login">Login</a>
+                <a href="/mvc/">Home</a>
+                <a href="/mvc/login">Login</a>
             </nav>
         </div>
     </header>

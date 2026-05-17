@@ -1,14 +1,3 @@
-<header class="main-header">
-    <div class="container">
-        <a href="/mvc/public/" class="logo">Mini MVC</a>
-
-        <nav class="main-nav">
-            <a href="/mvc/public/">Home</a>
-            <a href="/mvc/public/login">Login</a>
-        </nav>
-    </div>
-</header>
-
 <main class="container">
     <section style="display:flex; justify-content:center;">
         <div class="card" style="width:100%; max-width:420px;">
@@ -18,7 +7,7 @@
                 Acesse sua conta para continuar.
             </p>
 
-            <form action="/mvc/public/login" method="POST">
+            <form action="/mvc/login" method="POST">
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input 
@@ -56,7 +45,7 @@
             <hr>
 
             <p>
-                <a href="/mvc/public/">Voltar para Home</a>
+                <a href="/mvc">Voltar para Home</a>
             </p>
         </div>
     </section>
