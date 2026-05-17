@@ -20,11 +20,18 @@ class Router
     {
         $uri = parse_url($uri, PHP_URL_PATH);
 
-        // remover /public/indesx se estiver acessando
+        $basePath = '/mvc/public';
 
-        $uri = str_replace('public/index.php', '', $uri);
+        // Remove /mvc/public
+        if (str_starts_with($uri, $basePath)) {
+            $uri = substr($uri, strlen($basePath));
+        }
 
-        if ($uri === '') {
+        // Remove /index.php
+        $uri = str_replace('/index.php', '', $uri);
+
+        // Corrige vazio
+        if ($uri === '' || $uri === '/') {
             $uri = '/';
         }
 
@@ -33,20 +40,10 @@ class Router
             echo "Rota não encontrada: " . $uri;
             return;
         }
-        
-        [$controller, $action] = $this->routes[$method][$uri];
-        
-        if (!class_exists($controller)) {
-            echo "Controller não encontrado: " . $controller;
-            return;
-        }
-            
-        $controllerInstance = new $controller();
 
-        if (!method_exists($controllerInstance, $action)) {
-            echo "Método não encontrado: " . $action;
-        }
-            
+        [$controller, $action] = $this->routes[$method][$uri];
+
+        $controllerInstance = new $controller();
         $controllerInstance->$action();
     }
 }
