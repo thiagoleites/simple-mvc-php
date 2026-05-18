@@ -1,30 +1,90 @@
-# 🚀 Simple PHP MVC + Repository Pattern
+# Simple PHP MVC Application
 
-Um pequeno sistema estruturado em **MVC (Model-View-Controller)** desenvolvido em PHP puro, focado em simplicidade, organização e boas práticas. Este projeto implementa o **Repository Design Pattern** para isolar a lógica de acesso a dados, mantendo os controllers limpos e o código altamente testável e manutenível.
+A simple PHP MVC skeleton built with pure PHP and PSR-4 autoloading. This project demonstrates a clean separation between routes, controllers, views, and basic session-based authentication. It is designed as a lightweight starting point for extending into a MySQL-backed application.
 
-## 🎯 Funcionalidades
+## Features
 
-* **Arquitetura MVC:** Separação clara entre Lógica de Negócio (Model), Interface (View) e Controle de Requisições (Controller).
-* **Repository Pattern:** Abstração das consultas ao banco de dados, facilitando a troca de ORMs ou drivers de banco no futuro.
-* **Rotas Simples:** Ponto de entrada único (`public/index.php`) lidando com as requisições.
-* **PDO Integrado:** Conexão segura com o banco de dados prevenindo SQL Injection.
+* Simple MVC structure with controllers and views
+* Custom routing using `routes/web.php`
+* Front controller entry point in `public/index.php`
+* Session-based authentication guard with `App\Core\Auth`
+* Basic admin-only route protection for user pages
+* PSR-4 autoloading via Composer
 
-## 📂 Estrutura de Diretórios
-
-A estrutura do projeto foi pensada para ser intuitiva:
+## Project Structure
 
 ```text
-├── app/
-│   ├── Controllers/    # Lida com as requisições HTTP e retorna as Views
-│   ├── Models/         # Entidades que representam as tabelas do banco
-│   ├── Repositories/   # Lógica de acesso a dados (Consultas SQL)
-│   └── Views/          # Arquivos HTML/PHP com a interface do usuário
-├── config/
-│   └── database.php    # Configurações de conexão com o banco (PDO)
-├── public/
-│   ├── index.php       # Entry point da aplicação (Front Controller)
-│   └── assets/         # CSS, JS e Imagens
-├── routes/
-│   └── web.php         # Configurações de rotas
-│   
-└── README.md
+/ app/
+  / Controllers/   # Request handling and page logic
+  / Core/          # Base controller, router, auth helper
+  / Views/         # PHP view templates and layout
+/public/
+  index.php       # Application entry point
+/routes/
+  web.php         # Route definitions
+/composer.json    # PSR-4 autoload configuration
+/vendor/          # Composer dependencies and autoloader
+```
+
+## Routes
+
+* `GET /mvc/` -> `App\Controllers\HomeController@index`
+* `GET /mvc/login` -> `App\Controllers\AuthController@login`
+* `POST /mvc/login` -> `App\Controllers\AuthController@authenticate`
+* `GET /mvc/logout` -> `App\Controllers\AuthController@logout`
+* `GET /mvc/usuarios` -> `App\Controllers\UserController@index`
+
+## Authentication
+
+The application uses a simple session-based login flow:
+
+* Login form is rendered at `/mvc/login`
+* Credentials are validated in `AuthController::authenticate`
+* Successful login stores user data in `$_SESSION['usuario']`
+* Access to `/mvc/usuarios` requires `admin` level via `Auth::requireLevel`
+
+> Current demo credentials:
+> * email: `admin@email.com`
+> * password: `123456`
+
+## How to Run
+
+1. Install dependencies:
+
+```bash
+composer install
+```
+
+2. Start the PHP built-in server from the project root:
+
+```bash
+php -S localhost:8000 -t public
+```
+
+3. Open the browser:
+
+```text
+http://localhost:8000/mvc/
+```
+
+If your project is served from a subfolder like `/mvc`, make sure the router base path in `app/Core/Router.php` matches that folder.
+
+## Extending with MySQL
+
+This project is a good starting point for adding MySQL support:
+
+* Add a `config/database.php` file for PDO connection settings
+* Create `app/Models/` for data entities
+* Add `app/Repositories/` or database classes for queries
+* Replace the hardcoded login and user list with real database queries
+
+Example PDO setup:
+
+```php
+$pdo = new PDO('mysql:host=localhost;dbname=your_db;charset=utf8', 'user', 'password');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+```
+
+## Notes
+
+This repository is intentionally small and easy to understand. It is intended as a learning base for PHP MVC concepts and can be expanded into a MySQL-powered application by adding models, repositories, and database configuration.
