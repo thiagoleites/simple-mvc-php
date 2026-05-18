@@ -1,6 +1,6 @@
 <main class="container">
     <section style="display:flex; justify-content:center;">
-        <div class="card" style="width:100%; max-width:420px;">
+        <div class="card" style="width:100%; max-width:520px;">
             <h2>Login</h2>
 
             <p class="text-dark-gray">
