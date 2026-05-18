@@ -24,7 +24,29 @@
     </style>
 </head>
 <body>
-    
+    <section class="language-bar">
+        <div class="form-group">
+            <label><?= __('system.language') ?></label>
+            <select
+                class="form-control"
+                id="language-select"
+            >
+                <option
+                    value="pt_br"
+                    <?= ($_SESSION['lang'] ?? 'pt_br') === 'pt_br' ? 'selected' : '' ?>
+                >
+                    🇧🇷 Português
+                </option>
+
+                <option
+                    value="en"
+                    <?= ($_SESSION['lang'] ?? 'pt_br') === 'en' ? 'selected' : '' ?>
+                >
+                    🇺🇸 English
+                </option>
+            </select>
+        </div>
+    </section>
     <header class="main-header">
         <div class="container">
             <a href="/mvc" class="logo">Mini MVC</a>
@@ -38,5 +60,15 @@
 
     <?php require $pathView; ?>
 
+<script>
+document
+    .getElementById('language-select')
+    .addEventListener('change', function () {
+
+        window.location.href =
+            '/mvc/lang/' + this.value;
+
+    });
+</script>
 </body>
 </html>

@@ -1,31 +1,31 @@
 <main class="container">
     <section style="display:flex; justify-content:center;">
         <div class="card" style="width:100%; max-width:520px;">
-            <h2>Login</h2>
+            <h2><?= __('login.title') ?></h2>
 
             <p class="text-dark-gray">
-                Acesse sua conta para continuar.
+                <?= __('login.subtitle') ?>
             </p>
 
             <form action="/mvc/login" method="POST">
                 <div class="form-group">
-                    <label for="email">E-mail</label>
+                    <label for="email"><?= __('login.email') ?></label>
                     <input 
                         type="email" 
                         id="email" 
                         name="email" 
-                        placeholder="seuemail@email.com"
+                        placeholder="<?= __('login.email_placeholder') ?>"
                         required
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Senha</label>
+                    <label for="password"><?= __('login.password') ?></label>
                     <input 
                         type="password" 
                         id="password" 
                         name="password" 
-                        placeholder="Digite sua senha"
+                        placeholder="<?= __('login.password_placeholder') ?>"
                         required
                     >
                 </div>
@@ -33,19 +33,19 @@
                 <div class="form-group-inline">
                     <div class="custom-control">
                         <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Lembrar acesso</label>
+                        <label for="remember"><?= __('login.remember') ?></label>
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">
-                    Entrar
+                    <?= __('login.submit') ?>
                 </button>
             </form>
 
             <hr>
 
             <p>
-                <a href="/mvc">Voltar para Home</a>
+                <a href="/mvc"><?= __('login.back_home') ?></a>
             </p>
         </div>
     </section>
