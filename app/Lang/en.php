@@ -2,11 +2,6 @@
 
 return [
     'system.language' => 'Language',
-    // 'login.title' => 'Please log in to access the dashboard',
-    // 'login.email' => 'Email',
-    // 'login.password' => 'Password',
-    // 'login.remember' => 'Remember Me',
-    // 'login.button' => 'Login',
 
     'login.title' => 'Login',
     'login.subtitle' => 'Access your account to continue.',

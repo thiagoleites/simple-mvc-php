@@ -2,11 +2,6 @@
 
 return [
     'system.language' => 'Idioma',
-    // 'login.title' => 'Faça login para acessar o painel de controle',
-    // 'login.email' => 'E-mail',
-    // 'login.password' => 'Senha',
-    // 'login.remember' => 'Lembrar-me',
-    // 'login.button' => 'Entrar',
 
     'login.title' => 'Login',
     'login.subtitle' => 'Acesse sua conta para continuar.',
