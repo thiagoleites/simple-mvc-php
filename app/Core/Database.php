@@ -12,7 +12,7 @@ class Database
     const DB_USER = 'root';
     const DB_PASS = '';
 
-    private static ?\PDO $connection = null;
+    private static ?PDO $connection = null;
 
     public static function connection()
     {
