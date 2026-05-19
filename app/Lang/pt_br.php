@@ -22,4 +22,7 @@ return [
     'settings.save' => 'Salvar Configurações',
 
     'database.connection_error' => 'Erro de conexão com o banco de dados',
+
+    'error.title' => 'Ops! Algo deu errado',
+    'error.back' => 'Voltar'
 ];

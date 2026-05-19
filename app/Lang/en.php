@@ -23,4 +23,6 @@ return [
 
 
     'database.connection_error' => 'Database connection error',
+    'error.title' => 'Oops! Something went wrong',
+    'error.back' => 'Go back'
 ];

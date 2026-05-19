@@ -33,7 +33,9 @@ class Database
             return self::$connection;
 
         } catch (PDOException $e) {
-            die(_('database.connection_error') . ': ' . $e->getMessage());
+            ErrorHandler::abort(
+                __('database.connection_error') . ': ' . $e->getMessage()
+            );
         }
     }
 }
