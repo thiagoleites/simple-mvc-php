@@ -25,4 +25,6 @@ return [
     'settings.general' => 'Configurações Gerais',
     'settings.profile' => 'Configurações de Perfil',
     'settings.save' => 'Salvar Configurações',
+
+    'database.connection_error' => 'Erro de conexão com o banco de dados',
 ];

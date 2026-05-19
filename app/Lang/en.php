@@ -25,4 +25,7 @@ return [
     'settings.general' => 'General Settings',
     'settings.profile' => 'Profile Settings',
     'settings.save' => 'Save Settings',
+
+
+    'database.connection_error' => 'Database connection error',
 ];
