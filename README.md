@@ -1,90 +1,220 @@
 # Simple PHP MVC Application
 
-A simple PHP MVC skeleton built with pure PHP and PSR-4 autoloading. This project demonstrates a clean separation between routes, controllers, views, and basic session-based authentication. It is designed as a lightweight starting point for extending into a MySQL-backed application.
+A lightweight PHP MVC skeleton built with pure PHP and PSR-4 autoloading. This project demonstrates a clean separation between routes, controllers, views, authentication, and environment configuration. It was designed as a minimal learning foundation that can evolve into a complete production-ready application.
+
+---
 
 ## Features
 
-* Simple MVC structure with controllers and views
-* Custom routing using `routes/web.php`
-* Front controller entry point in `public/index.php`
-* Session-based authentication guard with `App\Core\Auth`
-* Basic admin-only route protection for user pages
-* PSR-4 autoloading via Composer
+✔ Simple MVC architecture with Controllers, Views and Core classes  
+✔ Custom routing system using `routes/web.php`  
+✔ Front Controller pattern via `public/index.php`  
+✔ Session-based authentication system  
+✔ Route protection with authorization levels  
+✔ PSR-4 autoloading via Composer  
+✔ Native `.env` support without external libraries  
+✔ Environment example file included (`.env.example`)  
+✔ Lightweight and beginner-friendly structure  
+
+---
 
 ## Project Structure
 
 ```text
-/ app/
-  / Controllers/   # Request handling and page logic
-  / Core/          # Base controller, router, auth helper
-  / Views/         # PHP view templates and layout
-/public/
-  index.php       # Application entry point
-/routes/
-  web.php         # Route definitions
-/composer.json    # PSR-4 autoload configuration
-/vendor/          # Composer dependencies and autoloader
+/
+├── app/
+│   ├── Controllers/     # Request handling and page logic
+│   ├── Core/            # Router, Controller, Auth, Env
+│   └── Views/           # View templates and layouts
+│
+├── public/
+│   └── index.php        # Application entry point
+│
+├── routes/
+│   └── web.php          # Route definitions
+│
+├── .env.example         # Environment configuration example
+├── composer.json        # PSR-4 autoload configuration
+├── vendor/              # Composer dependencies
 ```
+
+---
 
 ## Routes
 
-* `GET /mvc/` -> `App\Controllers\HomeController@index`
-* `GET /mvc/login` -> `App\Controllers\AuthController@login`
-* `POST /mvc/login` -> `App\Controllers\AuthController@authenticate`
-* `GET /mvc/logout` -> `App\Controllers\AuthController@logout`
-* `GET /mvc/usuarios` -> `App\Controllers\UserController@index`
+Current routes:
+
+```text
+GET    /mvc/             -> HomeController@index
+GET    /mvc/login        -> AuthController@login
+POST   /mvc/login        -> AuthController@authenticate
+GET    /mvc/logout       -> AuthController@logout
+GET    /mvc/usuarios     -> UserController@index
+```
+
+---
 
 ## Authentication
 
-The application uses a simple session-based login flow:
+The application currently uses a simple session-based authentication flow.
 
-* Login form is rendered at `/mvc/login`
-* Credentials are validated in `AuthController::authenticate`
-* Successful login stores user data in `$_SESSION['usuario']`
-* Access to `/mvc/usuarios` requires `admin` level via `Auth::requireLevel`
+Workflow:
 
-> Current demo credentials:
-> * email: `admin@email.com`
-> * password: `123456`
+- Login page rendered at:
 
-## How to Run
+```text
+/mvc/login
+```
 
-1. Install dependencies:
+- Credentials validated by:
+
+```php
+AuthController::authenticate()
+```
+
+- User data stored in:
+
+```php
+$_SESSION['usuario']
+```
+
+- Protected pages require authorization:
+
+```php
+Auth::requireLevel()
+```
+
+Current demo credentials:
+
+```text
+Email: admin@email.com
+Password: 123456
+```
+
+---
+
+## Environment Configuration
+
+The project includes native `.env` loading without requiring external packages.
+
+Create your local environment file:
+
+```bash
+cp .env.example .env
+```
+
+Example:
+
+```env
+APP_NAME='MINI MVC'
+
+APP_ENV=development
+APP_KEY=base
+APP_DEBUG=true
+APP_URL=http://localhost/mvc
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+Environment values can be accessed using:
+
+```php
+Env::get('DB_HOST');
+```
+
+or:
+
+```php
+getenv('DB_HOST');
+```
+
+---
+
+## Installation
+
+Install Composer dependencies:
 
 ```bash
 composer install
 ```
 
-2. Start the PHP built-in server from the project root:
+Run the PHP development server:
 
 ```bash
 php -S localhost:8000 -t public
 ```
 
-3. Open the browser:
+Open:
 
 ```text
 http://localhost:8000/mvc/
 ```
 
-If your project is served from a subfolder like `/mvc`, make sure the router base path in `app/Core/Router.php` matches that folder.
+If your project runs inside a subdirectory such as `/mvc`, make sure the router base path matches your application folder.
+
+---
+
+## Future Improvements
+
+Planned evolution:
+
+- Models
+- Database abstraction
+- Repository pattern
+- Middleware
+- Validation
+- Flash messages
+- Dependency Injection
+- PDO database layer
+- Migration system
+- Role permissions
+- API support
+
+---
 
 ## Extending with MySQL
 
-This project is a good starting point for adding MySQL support:
-
-* Add a `config/database.php` file for PDO connection settings
-* Create `app/Models/` for data entities
-* Add `app/Repositories/` or database classes for queries
-* Replace the hardcoded login and user list with real database queries
-
-Example PDO setup:
+Example PDO configuration:
 
 ```php
-$pdo = new PDO('mysql:host=localhost;dbname=your_db;charset=utf8', 'user', 'password');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo = new PDO(
+    'mysql:host=localhost;dbname=your_db;charset=utf8',
+    'user',
+    'password'
+);
+
+$pdo->setAttribute(
+    PDO::ATTR_ERRMODE,
+    PDO::ERRMODE_EXCEPTION
+);
 ```
+
+Suggested future structure:
+
+```text
+app/
+├── Models/
+├── Repositories/
+├── Services/
+```
+
+---
 
 ## Notes
 
-This repository is intentionally small and easy to understand. It is intended as a learning base for PHP MVC concepts and can be expanded into a MySQL-powered application by adding models, repositories, and database configuration.
+This project intentionally keeps the structure small and easy to understand. Its goal is to provide a practical way to learn PHP MVC concepts and progressively evolve into a larger application architecture.
+
+---
+
+## Support The Project ⭐
+
+If you're following this project, using it in your own applications, or learning from it, consider giving it a star.
+
+Your support helps the project grow and motivates future improvements.
+
+⭐ Star the repository and follow the journey.
