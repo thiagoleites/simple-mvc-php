@@ -1,3 +1,8 @@
+![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?logo=php&logoColor=white)
+![Composer](https://img.shields.io/badge/Composer-PSR--4-885630?logo=composer&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-learning%20project-blue)
+
 # Simple PHP MVC Application
 
 A lightweight PHP MVC skeleton built with pure PHP and PSR-4 autoloading. This project demonstrates a clean separation between routes, controllers, views, authentication, and environment configuration. It was designed as a minimal learning foundation that can evolve into a complete production-ready application.
