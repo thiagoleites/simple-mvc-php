@@ -12,5 +12,5 @@ function __(mixed $key)
 
     $langArray = require $file;
     return $langArray[$key] ?? $key;
-
+    
 }
