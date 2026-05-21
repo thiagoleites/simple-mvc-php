@@ -47,3 +47,8 @@ function loadEnv(mixed $path)
         putenv("$key=$value");
     }
 }
+
+function env(mixed $key, mixed $default = null)
+{
+    return $_ENV[$key] ?? getenv($key) ?? $default;
+}
