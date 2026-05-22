@@ -12,4 +12,11 @@ abstract class Model
     {
         return Database::connection();
     }
+
+    public static function all(): array
+    {
+        $stmt = self::db()->query("SELECT * FROM " . static::$table);
+
+        return $stmt->fetchAll();
+    }
 }

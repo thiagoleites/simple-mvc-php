@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Database;
+
 session_start();
 
 ini_set('display_errors', 1);
@@ -11,6 +13,10 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 loadEnv('../.env');
 
+
+$con = Database::connection();
+
+print_r($con);
 
 use App\Core\Router;
 
