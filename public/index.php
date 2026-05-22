@@ -13,11 +13,6 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 loadEnv('../.env');
 
-
-$con = Database::connection();
-
-print_r($con);
-
 use App\Core\Router;
 
 $router = new Router();
