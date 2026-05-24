@@ -52,3 +52,8 @@ function env(mixed $key, mixed $default = null)
 {
     return $_ENV[$key] ?? getenv($key) ?? $default;
 }
+
+function asset(string $path): string
+{
+    return '/mvc/public/assets/' . ltrim($path, '/');
+}
