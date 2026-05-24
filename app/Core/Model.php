@@ -128,6 +128,15 @@ abstract class Model
         ]);
     }
 
+    public static function count(): int
+    {
+        $stmt = static::db()->query(
+            "SELECT COUNT(*) FROM " . static::$table
+        );
+
+        return (int) $stmt->fetchColumn();
+    }
+
     protected static function generateUuid(): string
     {
         $data = random_bytes(16);
