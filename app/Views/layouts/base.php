@@ -109,6 +109,7 @@
     </header>
 
     <?php require $pathView; ?>
+    
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 
     <?php if (!empty($scripts)): ?>

@@ -13,7 +13,7 @@ class HomeController extends Controller
         $this->view('home', [
             'titulo'    => 'Página Home',
             'scripts'   => [
-                '/mvc/public/assets/js/home.js'
+                asset('js/home.js')
             ]
         ]);
     }
