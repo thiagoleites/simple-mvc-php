@@ -68,4 +68,44 @@ abstract class Model
 
         return $result ?: null;
     }
+
+
+    public static function create(array $data): bool
+    {
+        if (!isset($data[static::$publicKey])) {
+            $data[static::$publicKey] = static::generateUuid();
+        }
+
+        $columns = implode(', ', array_keys($data));
+
+        $placeholders = ':' . implode(', :', array_keys($data));
+
+        $sql = "
+            INSERT INTO " . static::$table . "
+            ({$columns})
+            VALUES ({$placeholders})
+        ";
+
+        $stmt = static::db()->prepare($sql);
+
+        return $stmt->execute($data);
+    }
+
+    protected static function generateUuid(): string
+    {
+        $data = random_bytes(16);
+
+        $data[6] = chr(
+            ord($data[6]) & 0x0f | 0x40
+        );
+
+        $data[8] = chr(
+            ord($data[8]) & 0x3f | 0x80
+        );
+
+        return vsprintf(
+            '%s%s-%s-%s-%s-%s%s%s',
+            str_split(bin2hex($data), 4)
+        );
+    }
 }
