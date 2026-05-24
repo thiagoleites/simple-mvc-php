@@ -91,6 +91,43 @@ abstract class Model
         return $stmt->execute($data);
     }
 
+    public static function update(int|string $id, array $data): bool
+    {
+        $fields = [];
+
+        foreach ($data as $column => $value) {
+            $fields[] = "{$column} = :{$column}";
+        }
+
+        $fields = implode(', ', $fields);
+
+        $sql = "
+            UPDATE " . static::$table . "
+            SET {$fields}
+            WHERE " . static::$primaryKey . " = :id
+        ";
+
+        $data['id'] = $id;
+
+        $stmt = static::db()->prepare($sql);
+
+        return $stmt->execute($data);
+    }
+
+    public static function delete(int|string $id): bool
+    {
+        $sql = "
+            DELETE FROM " . static::$table . "
+            WHERE " . static::$primaryKey . " = :id
+        ";
+
+        $stmt = static::db()->prepare($sql);
+
+        return $stmt->execute([
+            ':id' => $id
+        ]);
+    }
+
     protected static function generateUuid(): string
     {
         $data = random_bytes(16);
