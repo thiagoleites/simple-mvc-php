@@ -14,9 +14,16 @@ require_once __DIR__ . "/../vendor/autoload.php";
 loadEnv('../.env');
 
 use App\Core\Router;
+use App\Models\User;
 
 $router = new Router();
 
 require_once __DIR__ . '/../routes/web.php';
 
+
+$users = User::all();
+
+echo "<pre>";
+print_r($users);
+echo "</pre>";
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
