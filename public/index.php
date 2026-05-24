@@ -14,9 +14,9 @@ require_once __DIR__ . "/../vendor/autoload.php";
 loadEnv('../.env');
 
 use App\Core\Router;
-use App\Models\User;
 
 $router = new Router();
+
 
 require_once __DIR__ . '/../routes/web.php';
 
