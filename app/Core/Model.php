@@ -27,6 +27,28 @@ abstract class Model
         return static::firstWhere(static::$primaryKey, $id);
     }
 
+    public static function findByUuid(string $uuid): ?array
+    {
+        return static::firstWhere(static::$publicKey, $uuid);
+    }
+
+    public static function where(string $column, mixed $value): array
+    {
+        $sql = "
+            SELECT *
+            FROM " . static::$table . "
+            WHERE {$column} = :value
+        ";
+
+        $stmt = static::db()->prepare($sql);
+
+        $stmt->execute([
+            ':value' => $value
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function firstWhere(string $column, mixed $value): ?array
     {
         $sql = "
