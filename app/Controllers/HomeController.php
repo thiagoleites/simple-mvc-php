@@ -11,7 +11,10 @@ class HomeController extends Controller
     public function index()
     {
         $this->view('home', [
-            'titulo' => 'Página Home'
+            'titulo'    => 'Página Home',
+            'scripts'   => [
+                '/mvc/public/assets/js/home.js'
+            ]
         ]);
     }
 }
