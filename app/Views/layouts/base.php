@@ -51,7 +51,7 @@
             background-color: var(--color-white);
             transition: border-color 0.2s ease;
         }
-        
+
         .landing-card {
             max-width: none;
             height: 100%;
@@ -109,18 +109,25 @@
     </header>
 
     <?php require $pathView; ?>
-<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-<script src="/assets/js/scripts.js"></script>
-<script>
-document
-    .getElementById('language-select')
-    .addEventListener('change', function () {
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 
-        window.location.href =
-            '/mvc/lang/' + this.value;
+    <?php if (!empty($scripts)): ?>
+        <?php foreach ($scripts as $script): ?>
+            <script src="<?= $script ?>"></script>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
-    });
-</script>
+
+    <script>
+        document
+            .getElementById('language-select')
+            .addEventListener('change', function () {
+
+                window.location.href =
+                    '/mvc/lang/' + this.value;
+
+            });
+    </script>
 <script>
         // Este evento garante que o script só será executado depois que todo o HTML for carregado.
 document.addEventListener('DOMContentLoaded', () => {
