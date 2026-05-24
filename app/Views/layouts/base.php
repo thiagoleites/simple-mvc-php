@@ -51,6 +51,41 @@
             background-color: var(--color-white);
             transition: border-color 0.2s ease;
         }
+        
+        .landing-card {
+            max-width: none;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .landing-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .landing-hero-card {
+            max-width: none;
+        }
+
+        .accordion details {
+            overflow: hidden;
+        }
+
+        .accordion-content {
+            animation: accordionSmooth 0.28s ease;
+        }
+
+        @keyframes accordionSmooth {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
