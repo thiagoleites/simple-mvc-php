@@ -6,9 +6,12 @@ class Controller
 {
     protected function view(string $view, array $data = [])
     {
+        $scripts    = $data['scripts'] ?? [];
+        $styles     = $data['styles'] ?? [];
+
         extract($data);
 
-        $pathView = __DIR__ . '/../Views/' . $view . '.php';
+        $pathView   = __DIR__ . '/../Views/' . $view . '.php';
 
         require __DIR__ . '/../Views/layouts/base.php';
     }
