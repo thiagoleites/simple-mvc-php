@@ -128,6 +128,43 @@ abstract class Model
         ]);
     }
 
+    public static function updateByUuid(string $uuid, array $data): bool
+    {
+        $fields = [];
+
+        foreach ($data as $column => $value) {
+            $fields[] = "{$column} = :{$column}";
+        }
+
+        $fields = implode(', ', $fields);
+
+        $sql = "
+            UPDATE " . static::$table . "
+            SET {$fields}
+            WHERE " . static::$publicKey . " = :uuid
+        ";
+
+        $data['uuid'] = $uuid;
+
+        $stmt = static::db()->prepare($sql);
+
+        return $stmt->execute($data);
+    }
+
+    public static function deleteByUuid(string $uuid): bool
+    {
+        $sql = "
+            DELETE FROM " . static::$table . "
+            WHERE " . static::$publicKey . " = :uuid
+        ";
+
+        $stmt = static::db()->prepare($sql);
+
+        return $stmt->execute([
+            ':uuid' => $uuid
+        ]);
+    }
+
     public static function count(): int
     {
         $stmt = static::db()->query(
