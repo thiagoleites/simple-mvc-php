@@ -17,7 +17,10 @@ class UserController extends Controller
         ];
 
         $this->view('users/index', [
+            'titulo' => 'Listagem de usuários',
             'usuarios' => $usuarios
         ]);
+
+
     }
 }
