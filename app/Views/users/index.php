@@ -36,7 +36,7 @@
 
         </div>
 
-        <div class="card">
+        <div class="usuarios users">
 
             <div style="overflow-x:auto;">
 
