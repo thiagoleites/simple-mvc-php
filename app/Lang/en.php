@@ -24,5 +24,21 @@ return [
 
     'database.connection_error' => 'Database connection error',
     'error.title' => 'Oops! Something went wrong',
-    'error.back' => 'Go back'
+    'error.back' => 'Go back',
+
+
+    'users.title' => 'Users',
+    'users.subtitle' => 'Manage registered users.',
+    'users.create' => 'New User',
+    'users.name' => 'Name',
+    'users.email' => 'Email',
+    'users.role' => 'Role',
+    'users.status' => 'Status',
+    'users.language' => 'Language',
+    'users.created_at' => 'Created At',
+    'users.actions' => 'Actions',
+    'users.edit' => 'Edit',
+    'users.delete' => 'Delete',
+    'users.no_records' => 'No users found.',
+    'users.confirm_delete' => 'Do you really want to delete this user?',
 ];

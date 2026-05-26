@@ -24,5 +24,22 @@ return [
     'database.connection_error' => 'Erro de conexão com o banco de dados',
 
     'error.title' => 'Ops! Algo deu errado',
-    'error.back' => 'Voltar'
+    'error.back' => 'Voltar',
+
+
+
+    'users.title' => 'Usuários',
+    'users.subtitle' => 'Gerencie os usuários cadastrados.',
+    'users.create' => 'Novo usuário',
+    'users.name' => 'Nome',
+    'users.email' => 'E-mail',
+    'users.role' => 'Perfil',
+    'users.status' => 'Status',
+    'users.language' => 'Idioma',
+    'users.created_at' => 'Criado em',
+    'users.actions' => 'Ações',
+    'users.edit' => 'Editar',
+    'users.delete' => 'Excluir',
+    'users.no_records' => 'Nenhum usuário encontrado.',
+    'users.confirm_delete' => 'Deseja realmente excluir este usuário?',
 ];
