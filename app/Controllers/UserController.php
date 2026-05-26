@@ -4,23 +4,20 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
     public function index()
     {
-        Auth::requireLevel(['admin']);
+        // Auth::requireLevel(['admin']);
 
-        $usuarios = [
-            ['nome' => 'Thiago', 'nivel' => 'admin'],
-            ['nome' => 'João', 'nivel' => 'usuario'],
-        ];
+        $users = User::all();
 
         $this->view('users/index', [
-            'titulo' => 'Listagem de usuários',
-            'usuarios' => $usuarios
+            'title' => 'Listagem de usuarios',
+            'users' => $users
         ]);
-
 
     }
 }
