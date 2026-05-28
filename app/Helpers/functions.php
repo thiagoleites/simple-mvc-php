@@ -57,3 +57,13 @@ function asset(string $path): string
 {
     return '/mvc/public/assets/' . ltrim($path, '/');
 }
+
+if (!function_exists('redirect')) {
+
+    function redirect(string $url): never
+    {
+        header("Location: {$url}");
+        exit;
+    }
+
+}

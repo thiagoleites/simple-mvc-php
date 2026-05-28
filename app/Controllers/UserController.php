@@ -11,6 +11,7 @@ class UserController extends Controller
     public function index()
     {
         // Auth::requireLevel(['admin']);
+        Auth::requireRole(['admin']);
 
         $users = User::all();
 
