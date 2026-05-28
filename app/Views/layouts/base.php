@@ -108,7 +108,17 @@
             </div>
         </div>
     </header>
+    <?php if ($message = \App\Core\Session::getFlash('success')): ?>
+        <div class="alert alert-success">
+            <?= $message ?>
+        </div>
+    <?php endif; ?>
 
+    <?php if ($message = \App\Core\Session::getFlash('error')): ?>
+        <div class="alert alert-error">
+            <?= $message ?>
+        </div>
+    <?php endif; ?>
     <?php require $pathView; ?>
     
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
