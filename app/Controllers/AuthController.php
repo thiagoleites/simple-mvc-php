@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Validator;
+use App\Core\Session;
 
 class AuthController extends Controller
 {
@@ -13,21 +15,19 @@ class AuthController extends Controller
 
     public function authenticate()
     {
-        $email = $_POST['email'] ?? '';
-        $senha = $_POST['password'] ?? '';
+        $validator = Validator::make($_POST)
+            ->required('email', 'Informe seu e-mail.')
+            ->email('email', 'Digite um e-mail válido.')
+            ->required('password', 'Informe sua senha.')
+            ->min('password', 6, 'A senha precisa ter pelo menos 6 caracteres.');
 
-        if ($email === 'admin@email.com' && $senha === '123456') {
-            $_SESSION['usuario'] = [
-                'id' => 1,
-                'nome' => 'Admin',
-                'email' => $email,
-                'nivel' => 'admin'
-            ];
+        if ($validator->fails()) {
+            Session::setErrors($validator->errors());
+            Session::setOld($_POST);
+            Session::flash('error', 'Corrija os campos destacados.');
 
-            $this->redirect('/');
+            redirect('/mvc/login');
         }
-
-        echo "Login inválido";
     }
 
     public function logout()
