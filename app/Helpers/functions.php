@@ -68,6 +68,36 @@ if (!function_exists('redirect')) {
 
 }
 
+function old(string $key, mixed $default = ''): mixed
+{
+    global $old;
+
+    return htmlspecialchars($old[$key] ?? $default, ENT_QUOTES, 'UTF-8');
+}
+
+function error(string $key): ?string
+{
+    global $errors;
+
+    return $errors[$key] ?? null;
+}
+
+function has_error(string $key): bool
+{
+    return error($key) !== null;
+}
+
+function error_tooltip(string $key): string
+{
+    $message = error($key);
+
+    if (!$message) {
+        return '';
+    }
+
+    return 'data-tooltip="' . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . '" class="field-error"';
+}
+
 function dd(mixed $value): never
 {
 	echo '<pre>';
