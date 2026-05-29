@@ -67,3 +67,11 @@ if (!function_exists('redirect')) {
     }
 
 }
+
+function dd(mixed $value): never
+{
+	echo '<pre>';
+	var_dump($value);
+	echo '</pre>';
+	die();
+}
