@@ -91,6 +91,26 @@
                 transform: translateY(0);
             }
         }
+
+        .field-error {
+            border-color: var(--color-error) !important;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12) !important;
+        }
+
+        .field-error-wrapper {
+            position: relative;
+        }
+
+        .field-error-message {
+            color: var(--color-error);
+            font-size: 0.875rem;
+            margin-top: 6px;
+        }
+
+        [data-tooltip].field-error::after {
+            background-color: var(--color-error);
+            color: var(--color-white);
+        }
     </style>
 </head>
 <body>
