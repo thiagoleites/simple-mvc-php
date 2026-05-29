@@ -42,6 +42,34 @@ class Session
         return $message;
     }
 
+    public static function setErrors(array $errors): void
+    {
+        $_SESSION['errors'] = $errors;
+    }
+
+    public static function errors(): array
+    {
+        $errors = $_SESSION['errors'] ?? [];
+
+        unset($_SESSION['errors']);
+
+        return $errors;
+    }
+
+    public static function setOld(array $old): void
+    {
+        $_SESSION['old'] = $old;
+    }
+
+    public static function old(): array
+    {
+        $old = $_SESSION['old'] ?? [];
+
+        unset($_SESSION['old']);
+
+        return $old;
+    }
+
     public static function destroy(): void
     {
         session_destroy();
