@@ -1,52 +1,46 @@
 <main class="container">
     <section style="display:flex; justify-content:center;">
-        <div class="card" style="width:100%; max-width:520px;">
-            <h2><?= __('login.title') ?></h2>
+        <span class="badge"><?= __('login.title') ?></span>
 
-            <p class="text-dark-gray">
-                <?= __('login.subtitle') ?>
-            </p>
+        <h1><?= __('login.subtitle') ?></h1>
 
-            <form action="/mvc/login" method="POST">
-                <div class="form-group">
-                    <label for="email"><?= __('login.email') ?></label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        placeholder="<?= __('login.email_placeholder') ?>"
-                        required
-                    >
-                </div>
+        <form method="POST" action="/mvc/login">
+            <div class="form-group">
+                <label for="email"><?= __('login.email') ?></label>
 
-                <div class="form-group">
-                    <label for="password"><?= __('login.password') ?></label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        placeholder="<?= __('login.password_placeholder') ?>"
-                        required
-                    >
-                </div>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="<?= old('email') ?>"
+                    placeholder="<?= __('login.email_placeholder') ?>"
+                    <?= error_tooltip('email') ?>
+                >
 
-                <div class="form-group-inline">
-                    <div class="custom-control">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember"><?= __('login.remember') ?></label>
-                    </div>
-                </div>
+                <?php if (has_error('email')): ?>
+                    <p class="field-error-message"><?= error('email') ?></p>
+                <?php endif; ?>
+            </div>
 
-                <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">
-                    <?= __('login.submit') ?>
-                </button>
-            </form>
+            <div class="form-group">
+                <label for="password"><?= __('login.password') ?></label>
 
-            <hr>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="<?= __('login.password_placeholder') ?>"
+                    <?= error_tooltip('password') ?>
+                >
 
-            <p>
-                <a href="/mvc"><?= __('login.back_home') ?></a>
-            </p>
-        </div>
+                <?php if (has_error('password')): ?>
+                    <p class="field-error-message"><?= error('password') ?></p>
+                <?php endif; ?>
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+                <?= __('login.submit') ?>
+            </button>
+        </form>
     </section>
 </main>
