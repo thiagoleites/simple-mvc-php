@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Função auxiliar mudar idioma
+ */
 function __(mixed $key)
 {
     $lang = $_SESSION['lang'] ?? 'pt_br';
