@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Routes - Rotas
+ * 
+ */
+
 use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\UserController;
