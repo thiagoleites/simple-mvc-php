@@ -220,6 +220,10 @@ abstract class Model
         return $stmt->execute($data);
     }
 
+    /**
+     * Remove registro pelo UUID.
+     */
+
     public static function deleteByUuid(string $uuid): bool
     {
         $sql = "
