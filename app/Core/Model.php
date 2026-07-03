@@ -4,16 +4,53 @@ namespace App\Core;
 
 use PDO;
 
+/**
+ * Classe base absatrata para Models.
+ * 
+ * Fornece métodos genéricos para operações CRUD:
+ * - Listar todos os registros
+ * - Buscar por ID
+ * - Buscar por UUID
+ * - Criar registros
+ * - Atualizar registros
+ * - Remover registros
+ * - Contatar registros
+ * 
+ * Cada Model que herdar esta classe deve definir pelo menos:
+ * 
+ * protected static string $table = 'nome_da_tabela';
+ */
+
 abstract class Model
-{
+{   
+    /**
+     * Nome da tabela no banco
+     */
     protected static string $table;
+
+    /**
+     * Chave primária da tabela.
+     */
     protected static string $primaryKey = 'id';
+    
+    /**
+     * Chave pública da tabela.
+     */
     protected static string $publicKey = 'uuid';
+
+
+    /**
+     * Retorna a conexão PDO com o banco de dados.
+     */
 
     protected static function db(): PDO
     {
         return Database::connection();
     }
+
+    /**
+     * Retorna todos os registros da tabela.
+     */
 
     public static function all(): array
     {
