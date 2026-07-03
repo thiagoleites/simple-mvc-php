@@ -59,15 +59,27 @@ abstract class Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Busca registro pela chave primária
+     */
+
     public static function find(int|string $id): ?array
     {
         return static::firstWhere(static::$primaryKey, $id);
     }
 
+    /**
+     * Busca registro pelo UUID.
+     */
+
     public static function findByUuid(string $uuid): ?array
     {
         return static::firstWhere(static::$publicKey, $uuid);
     }
+
+    /**
+     * Retorna todos os registro onde uma coluna possui determinado valor.
+     */
 
     public static function where(string $column, mixed $value): array
     {
@@ -85,6 +97,10 @@ abstract class Model
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Retorna o primeiro registro encontrado onde uma coluna possui determinado valor. 
+     */
 
     public static function firstWhere(string $column, mixed $value): ?array
     {
@@ -106,6 +122,11 @@ abstract class Model
         return $result ?: null;
     }
 
+    /**
+     * Cria um novo registro na tabela.
+     * 
+     * Caso o UUID não seja informado, ele será gerado automaticamente.
+     */
 
     public static function create(array $data): bool
     {
@@ -127,6 +148,10 @@ abstract class Model
 
         return $stmt->execute($data);
     }
+
+    /**
+     * Atualiza um registro pela chave primária.
+     */
 
     public static function update(int|string $id, array $data): bool
     {
@@ -151,6 +176,10 @@ abstract class Model
         return $stmt->execute($data);
     }
 
+    /**
+     * Remove um regsitro pela chave primária.
+     */
+
     public static function delete(int|string $id): bool
     {
         $sql = "
@@ -164,6 +193,9 @@ abstract class Model
             ':id' => $id
         ]);
     }
+    /**
+     * Atualiza um resgistro pelo UUID.
+     */
 
     public static function updateByUuid(string $uuid, array $data): bool
     {
